@@ -1,145 +1,181 @@
 
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ĐĂNG KÝ THÔNG TIN POP-MART</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POP MART Đăng Ký</title>
+<style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: white;
       margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .header {
+      background-color: #e60012;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
       padding: 20px;
     }
-    .container {
-      background: #fff;
-      max-width: 500px;
-      margin: auto;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    h2 {
+      text-align: center;
+      margin-top: 10px;
     }
-    .form-group {
-      margin-bottom: 15px;
-    }
+
     label {
       font-weight: bold;
       display: block;
-      margin-bottom: 5px;
+      margin-top: 12px;
     }
-    input[type="text"],
-    input[type="email"] {
+
+    input, select {
       width: 100%;
       padding: 10px;
+      margin-top: 4px;
+      border-radius: 12px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      font-size: 16px;
     }
+
+    .dob-inputs {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
     .dob-inputs input {
-      width: 30%;
-      display: inline-block;
-      margin-right: 5%;
-      padding: 10px;
-      text-align: center;
+      flex: 1;
     }
+
     .checkbox-container {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .checkbox-container a {
+      color: #e6a500;
+      text-decoration: none;
+    }
+
+    .captcha {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-top: 12px;
     }
-    .checkbox-container input {
-      margin-right: 10px;
-    }
-    .captcha-section {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .captcha-img {
-      border: 1px solid #ccc;
-      padding: 3px 8px;
-      font-family: monospace;
-      font-size: 20px;
-      background: #eee;
+
+    .captcha canvas {
       border-radius: 5px;
+      margin-right: 8px;
     }
-    .submit-btn {
-      background: #c62828;
+
+    .captcha input {
+      flex: 1;
+    }
+
+    .captcha button {
+      background: none;
       border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      color: white;
       font-size: 20px;
       cursor: pointer;
-      display: block;
-      margin: 20px auto;
     }
-    .loading {
-      text-align: center;
-      display: none;
+
+    .submit-btn {
+      background-color: #e60012;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 24px;
+      font-size: 18px;
+      width: 100%;
+      margin-top: 16px;
+      cursor: pointer;
     }
-    .loading span {
-      font-size: 24px;
-    }
-    small {
-      color: #666;
-    }
-    a {
-      color: orange;
-      text-decoration: none;
+
+    .submit-btn:hover {
+      background-color: #c0000f;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <form id="form">
-      <div class="form-group">
-        <label>Full name (Họ tên)</label>
-        <input type="text" required>
-      </div>
-      <div class="form-group">
-        <label>Date of birth (Ngày Sinh)</label>
-        <div class="dob-inputs">
-          <input type="text" placeholder="DD" maxlength="2" required>
-          <input type="text" placeholder="MM" maxlength="2" required>
-          <input type="text" placeholder="YYYY" maxlength="4" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Phone number (Số điện thoại)</label>
-        <input type="text" required>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" required>
-      </div>
-      <div class="form-group">
-        <label>ID Card/Passport (CCCD/Hộ chiếu)</label>
-        <input type="text" required>
-      </div>
-      <div class="checkbox-container">
-        <input type="checkbox" required>
-        <label>Tôi đã đọc và đồng ý với <a href="#">Thể lệ chương trình</a><br><small>I have read and agree to the <a href="#">Event Terms & Conditions</a></small></label>
-      </div>
-      <div class="captcha-section form-group">
-        <div class="captcha-img">m0v8s</div>
-        <input type="text" required placeholder="m0v8s">
-        <button type="button" onclick="alert('Tải lại mã');" style="background:none;border:none;"><span style="font-size:20px;">🔁</span></button>
-      </div>
-      <button type="submit" class="submit-btn">➤</button>
-      <div class="loading" id="loading"><span>⏳</span></div>
-    </form>
-  </div>
-  <script>
-    document.getElementById('form').onsubmit = function(e) {
-      e.preventDefault();
-      document.getElementById('loading').style.display = 'block';
-      setTimeout(() => {
-        alert('Đăng ký thành công!');
-        document.getElementById('loading').style.display = 'none';
-      }, 1500);
-    };
+<div class="header">POP MART</div>
+<div class="container">
+<h2>ĐĂNG KÝ THAM GIA</h2>
+<label>Sales date (Ngày bán hàng)</label>
+<select id="slNgayBanHang">
+<option>08/07/2025</option>
+<option>09/07/2025</option>
+<option>10/07/2025</option>
+<option>11/07/2025</option>
+<option>12/07/2025</option>
+</select>
+<label>Session (Phiên)</label>
+<select id="slPhien">
+<option>Phiên 1</option>
+<option>Phiên 2</option>
+</select>
+<label>Full name (Họ tên)</label>
+<input id="txtCCCD" placeholder="" type="text"/>
+<label>Date of birth (Ngày Sinh)</label>
+<div class="dob-inputs">
+<input id="txtNgaySinh_Thang" placeholder="Ngày" type="text"/>
+<input id="txtNgaySinh_Nam" placeholder="Tháng" type="text"/>
+<input id="txtEmail" placeholder="Năm" type="text"/>
+</div>
+<label>Phone number (Số điện thoại)</label>
+<input id="txtCCCD" placeholder="" type="text"/>
+<label>Email</label>
+<input placeholder="" type="email"/>
+<label>ID Card/Passport (CCCD/Hộ chiếu)</label>
+<input placeholder="" type="text"/>
+<div class="checkbox-container">
+<input checked="" id="ckbDongY" type="checkbox"/> Tôi đã đọc và đồng ý với 
+      <a href="#">Thể lệ chương trình</a>
+</div>
+<div class="captcha">
+<canvas height="40" id="captchaCanvas" width="100"></canvas>
+<input id="txtCaptcha" placeholder="Nhập captcha" type="text"/>
+<button onclick="generateCaptcha()">↻</button>
+</div>
+<button class="submit-btn">Đăng ký</button>
+</div>
+<script>
+    function generateCaptcha() {
+      const canvas = document.getElementById('captchaCanvas');
+      const ctx = canvas.getContext('2d');
+      const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+      let captchaText = '';
+      for (let i = 0; i < 5; i++) {
+        captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      ctx.fillStyle = '#cccccc';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = '22px Arial';
+      ctx.fillStyle = '#000';
+      ctx.fillText(captchaText, 10, 28);
+
+      for (let i = 0; i < 30; i++) {
+        ctx.fillStyle = '#888';
+        ctx.beginPath();
+        ctx.arc(Math.random() * 100, Math.random() * 40, 1.5, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+    }
+
+    window.onload = generateCaptcha;
   </script>
 </body>
 </html>
