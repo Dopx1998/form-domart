@@ -1,25 +1,21 @@
-
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>POP MART Đăng Ký</title>
-<style>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>POP MART Đăng Ký</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       background: white;
       margin: 0;
       padding: 0;
     }
-
     .container {
       max-width: 400px;
       margin: 0 auto;
       padding: 16px;
     }
-
     .header {
       background-color: #e60012;
       color: white;
@@ -28,18 +24,15 @@
       text-align: center;
       padding: 20px;
     }
-
     h2 {
       text-align: center;
       margin-top: 10px;
     }
-
     label {
       font-weight: bold;
       display: block;
       margin-top: 12px;
     }
-
     input, select {
       width: 100%;
       padding: 10px;
@@ -48,49 +41,40 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-
     .dob-inputs {
       display: flex;
       justify-content: space-between;
       gap: 6px;
     }
-
     .dob-inputs input {
       flex: 1;
     }
-
     .checkbox-container {
       margin-top: 16px;
       font-size: 14px;
     }
-
     .checkbox-container a {
       color: #e6a500;
       text-decoration: none;
     }
-
     .captcha {
       display: flex;
       align-items: center;
       margin-top: 12px;
     }
-
     .captcha canvas {
       border-radius: 5px;
       margin-right: 8px;
     }
-
     .captcha input {
       flex: 1;
     }
-
     .captcha button {
       background: none;
       border: none;
       font-size: 20px;
       cursor: pointer;
     }
-
     .submit-btn {
       background-color: #e60012;
       color: white;
@@ -102,7 +86,6 @@
       margin-top: 16px;
       cursor: pointer;
     }
-
     .submit-btn:hover {
       background-color: #c0000f;
     }
@@ -111,71 +94,78 @@
 <body>
 <div class="header">POP MART</div>
 <div class="container">
-<h2>ĐĂNG KÝ THAM GIA</h2>
-<label>Sales date (Ngày bán hàng)</label>
-<select id="slNgayBanHang">
-<option>08/07/2025</option>
-<option>09/07/2025</option>
-<option>10/07/2025</option>
-<option>11/07/2025</option>
-<option>12/07/2025</option>
-</select>
-<label>Session (Phiên)</label>
-<select id="slPhien">
-<option>Phiên 1</option>
-<option>Phiên 2</option>
-</select>
-<label>Full name (Họ tên)</label>
-<input id="txtCCCD" placeholder="" type="text"/>
-<label>Date of birth (Ngày Sinh)</label>
-<div class="dob-inputs">
-<input id="txtNgaySinh_Thang" placeholder="Ngày" type="text"/>
-<input id="txtNgaySinh_Nam" placeholder="Tháng" type="text"/>
-<input id="txtEmail" placeholder="Năm" type="text"/>
+  <h2>ĐĂNG KÝ THAM GIA</h2>
+
+  <label>Sales date (Ngày bán hàng)</label>
+  <select id="slNgayBanHang">
+    <option>08/07/2025</option>
+    <option>09/07/2025</option>
+    <option>10/07/2025</option>
+    <option>11/07/2025</option>
+    <option>12/07/2025</option>
+  </select>
+
+  <label>Session (Phiên)</label>
+  <select id="slPhien">
+    <option>Phiên 1</option>
+    <option>Phiên 2</option>
+  </select>
+
+  <label>Full name (Họ tên)</label>
+  <input id="txtHoTen" type="text" />
+
+  <label>Date of birth (Ngày Sinh)</label>
+  <div class="dob-inputs">
+    <input id="txtNgaySinh_Ngay" placeholder="Ngày" type="text"/>
+    <input id="txtNgaySinh_Thang" placeholder="Tháng" type="text"/>
+    <input id="txtNgaySinh_Nam" placeholder="Năm" type="text"/>
+  </div>
+
+  <label>Phone number (Số điện thoại)</label>
+  <input id="txtSoDienThoai" type="text" />
+
+  <label>Email</label>
+  <input id="txtEmail" type="email" />
+
+  <label>ID Card/Passport (CCCD/Hộ chiếu)</label>
+  <input id="txtCCCD" type="text" />
+
+  <div class="checkbox-container">
+    <input checked id="ckbDongY" type="checkbox" /> Tôi đã đọc và đồng ý với
+    <a href="#">Thể lệ chương trình</a>
+  </div>
+
+  <div class="captcha">
+    <canvas height="40" id="captchaCanvas" width="100"></canvas>
+    <input id="txtCaptcha" placeholder="Nhập captcha" type="text"/>
+    <button onclick="generateCaptcha()">↻</button>
+  </div>
+
+  <button class="submit-btn">Đăng ký</button>
 </div>
-<label>Phone number (Số điện thoại)</label>
-<input id="txtCCCD" placeholder="" type="text"/>
-<label>Email</label>
-<input placeholder="" type="email"/>
-<label>ID Card/Passport (CCCD/Hộ chiếu)</label>
-<input placeholder="" type="text"/>
-<div class="checkbox-container">
-<input checked="" id="ckbDongY" type="checkbox"/> Tôi đã đọc và đồng ý với 
-      <a href="#">Thể lệ chương trình</a>
-</div>
-<div class="captcha">
-<canvas height="40" id="captchaCanvas" width="100"></canvas>
-<input id="txtCaptcha" placeholder="Nhập captcha" type="text"/>
-<button onclick="generateCaptcha()">↻</button>
-</div>
-<button class="submit-btn">Đăng ký</button>
-</div>
+
 <script>
-    function generateCaptcha() {
-      const canvas = document.getElementById('captchaCanvas');
-      const ctx = canvas.getContext('2d');
-      const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-      let captchaText = '';
-      for (let i = 0; i < 5; i++) {
-        captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-
-      ctx.fillStyle = '#cccccc';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.font = '22px Arial';
-      ctx.fillStyle = '#000';
-      ctx.fillText(captchaText, 10, 28);
-
-      for (let i = 0; i < 30; i++) {
-        ctx.fillStyle = '#888';
-        ctx.beginPath();
-        ctx.arc(Math.random() * 100, Math.random() * 40, 1.5, 0, 2 * Math.PI);
-        ctx.fill();
-      }
+  function generateCaptcha() {
+    const canvas = document.getElementById('captchaCanvas');
+    const ctx = canvas.getContext('2d');
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let captchaText = '';
+    for (let i = 0; i < 5; i++) {
+      captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-
-    window.onload = generateCaptcha;
-  </script>
+    ctx.fillStyle = '#cccccc';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '22px Arial';
+    ctx.fillStyle = '#000';
+    ctx.fillText(captchaText, 10, 28);
+    for (let i = 0; i < 30; i++) {
+      ctx.fillStyle = '#888';
+      ctx.beginPath();
+      ctx.arc(Math.random() * 100, Math.random() * 40, 1.5, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+  }
+  window.onload = generateCaptcha;
+</script>
 </body>
 </html>
