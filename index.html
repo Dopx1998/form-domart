@@ -48,7 +48,6 @@
 <div class="container">
   <h2>ĐĂNG KÝ THAM GIA</h2>
 
-  <!-- Các trường nhập liệu -->
   <label>Sales date (Ngày bán hàng)</label>
   <select id="slNgayBanHang">
     <option>01/08/2025</option>
@@ -65,7 +64,7 @@
   </select>
 
   <label>Full name (Họ tên)</label>
-  <input id="txtHoTen" placeholder="" type="text"/>
+  <input id="txtHoTen" type="text"/>
 
   <label>Date of birth (Ngày Sinh)</label>
   <div class="dob-inputs">
@@ -75,13 +74,13 @@
   </div>
 
   <label>Phone number (Số điện thoại)</label>
-  <input id="txtSoDienThoai" placeholder="" type="text"/>
+  <input id="txtSoDienThoai" type="text"/>
 
   <label>Email</label>
-  <input id="txtEmail" placeholder="" type="email"/>
+  <input id="txtEmail" type="email"/>
 
   <label>ID Card/Passport (CCCD/Hộ chiếu)</label>
-  <input id="txtCCCD" placeholder="" type="text"/>
+  <input id="txtCCCD" type="text"/>
 
   <div class="checkbox-container">
     <input checked id="ckbDongY" type="checkbox"/> Tôi đã đọc và đồng ý với <a href="#">Thể lệ chương trình</a>
@@ -93,7 +92,6 @@
     <button onclick="generateCaptcha()">↻</button>
   </div>
 
-  <!-- Nút đăng ký tham gia -->
   <div id="dvDangKyThamDu" style="text-align:center;padding: 10px; margin-top:10px">
     <a id="btDangKyThamGia" onclick="DangKyThamDu()" class="MyButton" style="margin-top: 3px;">Đăng ký</a>
   </div>
@@ -106,7 +104,6 @@
 </div>
 
 <script>
-  // Hàm tạo CAPTCHA
   function generateCaptcha() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     let captchaText = '';
@@ -126,25 +123,16 @@
       ctx.fill();
     }
 
-    // Chuyển ảnh CAPTCHA thành base64 và gán cho thẻ <img>
     const base64Image = canvas.toDataURL();
     document.getElementById('captchaImage').src = base64Image;
-    window.captchaText = captchaText;  // Lưu captchaText để so sánh sau
+    window.captchaText = captchaText;
   }
 
-  // Hàm xử lý khi người dùng nhấn nút "Đăng ký"
   function DangKyThamDu() {
-    const userCaptcha = document.getElementById('txtCaptcha').value;
-    if (userCaptcha !== window.captchaText) {
-      alert('Captcha không chính xác!');
-      return;
-    }
-
     alert('Bạn đã đăng ký tham gia thành công!');
     document.getElementById('popupSuccess').style.display = 'block';
   }
 
-  // Tự động tạo CAPTCHA khi trang tải
   window.onload = generateCaptcha;
 </script>
 
